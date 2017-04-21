@@ -11,11 +11,25 @@
         <property name="name" type="java.lang.String">
             <column name="NAME"/>
         </property>
-        <property name="total" type="int">
-            <column name="TOTAL"/>
-        </property>
-        <property name="goal" type="int">
-            <column name="GOAL"/>
-        </property>
+
+        <component name="proteinData">
+            <property name="total" type="int">
+                <column name="TOTAL"/>
+            </property>
+            <property name="goal" type="int">
+                <column name="GOAL"/>
+            </property>
+        </component>
+
+        <idbag name="history" table="USER_HISTORY">
+            <collection-id column="ID" type="int">
+                <generator class="increment"/>
+            </collection-id>
+            <key column="USER_ID"/>
+            <composite-element class="com.psandchill.UserHistory">
+                <property name="entryTime" type="date" column="ENTRY_TIME"/>
+                <property name="entry" type="string" column="ENTRY"/>
+            </composite-element>
+        </idbag>
     </class>
 </hibernate-mapping>

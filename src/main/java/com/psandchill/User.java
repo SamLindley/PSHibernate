@@ -1,10 +1,31 @@
 package com.psandchill;
 
+import java.util.*;
+
 public class User {
     private int id;
     private String name;
-    private int total;
-    private int goal;
+
+    private ProteinData proteinData = new ProteinData();
+
+    private List<UserHistory> history = new ArrayList<UserHistory>() {
+    };
+
+    public List<UserHistory> getHistory() {
+        return history;
+    }
+
+    public void setHistory(List<UserHistory> history) {
+        this.history = history;
+    }
+
+    public ProteinData getProteinData() {
+        return proteinData;
+    }
+
+    public void setProteinData(ProteinData proteinData) {
+        this.proteinData = proteinData;
+    }
 
     public int getId() {
         return id;
@@ -22,19 +43,10 @@ public class User {
         this.name = name;
     }
 
-    public int getTotal() {
-        return total;
+    public void addHistory(UserHistory historyItem){
+        historyItem.setUser(this);
+        history.add(historyItem);
     }
 
-    public void setTotal(int total) {
-        this.total = total;
-    }
 
-    public int getGoal() {
-        return goal;
-    }
-
-    public void setGoal(int goal) {
-        this.goal = goal;
-    }
 }
